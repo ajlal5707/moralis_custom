@@ -5,7 +5,6 @@ const {
   convertWeiIntoPrice,
   convertTotalPriceToOriginalPrice,
 } = require('../common/helpers');
-const XANALIA_DEX_ABI = require('../abi/xanalia_dex_abi.json');
 const XANALIA_DEX_1155_ABI = require('../abi/xanalia_dex_1155_abi.json');
 const {
   SALE_NFT_STATUS,
@@ -34,18 +33,11 @@ async function synsData(receipt, address, txHash, networks, web3, db) {
     const checkTx = await commonService.checkTxIdExistedInSaleNft(txHash, db);
     if (!checkTx) {
 
-      let contractInstance
-      if (networks[0].xanalia_dex_1155.toLowerCase() == object.to_address.toLowerCase()) {
-        contractInstance = new web3.eth.Contract(
-          XANALIA_DEX_1155_ABI,
-          networks[0].xanalia_dex_1155
-        );
-      } else {
-        contractInstance = new web3.eth.Contract(
-          XANALIA_DEX_ABI,
-          networks[0].xanalia_dex_contract
-        );
-      }
+      let contractInstance = new web3.eth.Contract(
+        XANALIA_DEX_1155_ABI,
+        networks[0].xanalia_dex_1155
+      );
+
 
       const [events, transaction] = await Promise.all([
         contractInstance.getPastEvents('OrderCreated', {
@@ -74,7 +66,7 @@ async function synsData(receipt, address, txHash, networks, web3, db) {
           );
           if (
             !nft ||
-            (nft && Number(nft.standard_type) !== NFT_STANDARD_TYPE.ERC_721) ||  (nft && Number(nft.standard_type) !== NFT_STANDARD_TYPE.ERC_1155)
+            (nft && Number(nft.standard_type) !== NFT_STANDARD_TYPE.ERC_1155)
           ) {
             await commonService.updateFailExternalTransaction(
               txHash,

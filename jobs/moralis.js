@@ -12,9 +12,6 @@ const { TRANSACTION_ACTION } = require('../common/constant');
 const { run: updateCollection } = require('../services/collection.process');
 const { run: updateMakeOfferData } = require('../services/make-offer.process');
 const { run: updatePutOnSaleData } = require('../services/put-on-sale.process');
-//1155 put on sale
-const { run: updatePutOnSale1155Data } = require('../services/put-on-sale-1155.process');
-
 const { run: updateBuyNftData } = require('../services/buy-nft.process');
 const {
   run: updateCancelOfferData,
@@ -95,11 +92,6 @@ const listAction = [
   },
   {
     action: updatePutOnSaleData,
-    rule: ['OrderCreated'],
-    code: TRANSACTION_ACTION.putOnSale,
-  },
-  {
-    action: updatePutOnSale1155Data,
     rule: ['OrderCreated'],
     code: TRANSACTION_ACTION.putOnSale,
   },
