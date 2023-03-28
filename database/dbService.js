@@ -21,7 +21,7 @@ const tunnelConfig = {
   port: 22,
   username: "ec2-user",
   // privateKey: fs.readFileSync('/home/ajlal/pem-files/stg-noborderz-basion.pem', 'utf-8')
-  privateKey: fs.readFileSync('./database/stg-noborderz-basion.pem', 'utf-8')
+  privateKey: fs.readFileSync('/home/ubuntu/moralis_custom/database/stg-noborderz-basion.pem', 'utf-8')
 }
 
 const forwardConfig = {
