@@ -20,7 +20,8 @@ const tunnelConfig = {
   host: "52.16.154.84",
   port: 22,
   username: "ec2-user",
-  privateKey: fs.readFileSync('/home/ajlal/pem-files/stg-noborderz-basion.pem', 'utf-8')
+  // privateKey: fs.readFileSync('/home/ajlal/pem-files/stg-noborderz-basion.pem', 'utf-8')
+  privateKey: fs.readFileSync('./database/stg-noborderz-basion.pem', 'utf-8')
 }
 
 const forwardConfig = {
