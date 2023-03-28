@@ -1,0 +1,16 @@
+
+FROM public.ecr.aws/r2d2z1z9/sotanext/node:14
+
+WORKDIR /app/wallet
+
+COPY . .
+
+RUN chmod +x entrypoint.sh
+
+EXPOSE 3000
+
+RUN cp .env.example .env
+
+RUN npm install
+
+CMD /bin/bash ./entrypoint.sh

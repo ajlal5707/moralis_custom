@@ -1,0 +1,10 @@
+FROM public.ecr.aws/r2d2z1z9/sotanext/node:14
+
+RUN mkdir -p /app/wallet
+WORKDIR /app/wallet
+
+COPY . .
+
+RUN npm install
+
+CMD ["npm", "run", "start"]

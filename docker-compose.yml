@@ -1,0 +1,16 @@
+version: "3.8"
+networks: 
+  default: 
+    external: 
+      name: noborderz-common-network
+services:
+  wallet:
+    container_name: noborderz_wallet
+    image: noborderz_wallet_service
+    build: .
+    volumes:
+      - .:/app/wallet
+    stdin_open: true
+    tty: true
+    environment:
+      HOST: 0.0.0.0
