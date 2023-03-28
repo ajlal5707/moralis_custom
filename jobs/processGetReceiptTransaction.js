@@ -6,6 +6,7 @@ const { run: expiredJob } = require('./processCheckExpiredBid');
 
 async function main() {
   const db = await getDbConnection();
+  console.log(db)
   if (!db) {
     console.log(
       '🚀 ~ file: processGetReceiptTransaction.js ~ line 51 ~ main ~ db',
