@@ -174,12 +174,12 @@ const queue = [];
 async function connect(db) {
   try {
     await Moralis.start({
-      serverUrl: process.env.MORALIS_SERVER,
-      appId: process.env.MORALIS_APP_ID,
-      masterKey: process.env.MORALIS_MASTER_KEY,
+      serverUrl: "https://3avlocitsdzc.grandmoralis.com:2053/server",
+      appId: "uzXZ15U3V2XGtFr0cuALvJISXvgqUpe3kEPG5yaN",
+      masterKey: "N3SyBGAJvRznk6AlgHqC60fcB9k8jua92py6jhxP",
     });
     console.log(
-      `🚀🚀🚀🚀🚀🚀🚀🚀 ~ Moralis config :: serverUrl :: ${process.env.MORALIS_SERVER} :: appId :: ${process.env.MORALIS_APP_ID} :: masterKey :: ${process.env.MORALIS_MASTER_KEY} connect ~ Moralis Success 🚀🚀🚀🚀🚀🚀🚀🚀`
+      `🚀🚀🚀🚀🚀🚀🚀🚀 ~ Moralis config :: serverUrl ::  :: appId ::  :: masterKey ::  connect ~ Moralis Success 🚀🚀🚀🚀🚀🚀🚀🚀`
     );
 
     const [allNetwork, listNetworkToken] = await Promise.all([
