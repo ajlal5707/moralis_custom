@@ -12,10 +12,6 @@ const {
   MARKET_STATUS,
   NFT_STANDARD_TYPE,
 } = require('../common/constant');
-const { BigNumber } = require("bignumber.js");
-BigNumber.config({
-  EXPONENTIAL_AT: 1e+9,
-});
 
 async function run(txHash, address, networks, db) {
   console.log(`updatePutOnSaleData: ${txHash}, networks = ${networks[0].id}`);
@@ -166,7 +162,7 @@ async function synsData(receipt, address, txHash, networks, web3, db) {
 }
 
 function parseInput(input, networks, web3) {
-  const array = ['address', 'address', 'uint256', 'uint256'];
+  const array = ['address', 'address', 'uint256', 'uint256', 'uint256'];
   input = input.slice(10, input.length);
   const result = web3.eth.abi.decodeParameters(array, input);
   const network = commonService.getNetworkToken(result[1], networks);
@@ -175,7 +171,7 @@ function parseInput(input, networks, web3) {
     tokenAddress: result[0],
     paymentToken: result[1],
     tokenId: Number(result[2]),
-    price: new BigNumber(new BigNumber(result[3]).dividedBy(Math.pow(10, network.networkTokenDecimal))).toString(),
+    price: String(web3.utils.fromWei(result[4])),
     networkTokenId: network.networkTokenId,
     token: network.networkTokenName,
   };
