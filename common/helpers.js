@@ -1,6 +1,6 @@
 const { BigNumber } = require("bignumber.js");
 BigNumber.config({
-  EXPONENTIAL_AT: 40,
+  EXPONENTIAL_AT: 1e+9,
 });
 
 function convertPriceIntoWei(price, unit = 6) {

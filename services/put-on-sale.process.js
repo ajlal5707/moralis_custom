@@ -171,7 +171,7 @@ function parseInput(input, networks, web3) {
     tokenAddress: result[0],
     paymentToken: result[1],
     tokenId: Number(result[2]),
-    price: Number(convertWeiIntoPrice(result[3], network.networkTokenDecimal)),
+    price: new BigNumber(new BigNumber(result[3]).dividedBy(Math.pow(10, network.networkTokenDecimal))).toString(),
     networkTokenId: network.networkTokenId,
     token: network.networkTokenName,
   };
@@ -198,7 +198,7 @@ async function addNewSaleNft(
     nftId: nft.id,
     fromUserId: userId,
     toUserId: userId,
-    price: input.price.toString(),
+    price: input.price,
     orderId: orderId,
     originalPrice,
     networkTokenId,
