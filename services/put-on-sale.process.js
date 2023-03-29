@@ -198,7 +198,7 @@ async function addNewSaleNft(
     nftId: nft.id,
     fromUserId: userId,
     toUserId: userId,
-    price: input.price,
+    price: input.price.toString(),
     orderId: orderId,
     originalPrice,
     networkTokenId,
