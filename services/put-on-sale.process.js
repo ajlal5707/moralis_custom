@@ -12,6 +12,10 @@ const {
   MARKET_STATUS,
   NFT_STANDARD_TYPE,
 } = require('../common/constant');
+const { BigNumber } = require("bignumber.js");
+BigNumber.config({
+  EXPONENTIAL_AT: 1e+9,
+});
 
 async function run(txHash, address, networks, db) {
   console.log(`updatePutOnSaleData: ${txHash}, networks = ${networks[0].id}`);
